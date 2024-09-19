@@ -2,6 +2,8 @@
 
 ![img](img/DEMO.png)
 
+## LINK : (https://takumisudo-chart-patterns-st-streamlit-chart-patterns-7skgpw.streamlit.app/)
+
 ### Overview
 
 This Streamlit application provides powerful algorithms for identifying chart patterns in stock price data. It automates the detection of key technical analysis features like support and resistance levels, local tops and bottoms, and high/low points, offering traders the ability to make data-driven decisions with minimal manual intervention.
