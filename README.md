@@ -1,10 +1,21 @@
 ## Automated Chart Pattern Trading Application - README
 
+![img](img/DEMO.png)
+
 ### Overview
 
 This Streamlit application provides powerful algorithms for identifying chart patterns in stock price data. It automates the detection of key technical analysis features like support and resistance levels, local tops and bottoms, and high/low points, offering traders the ability to make data-driven decisions with minimal manual intervention.
 
 The application incorporates three essential algorithms as described in Neurotrader's video, *"3 Must-Know Algorithms for Automating Chart Pattern Trading in Python,"* to simplify the process of analyzing and interpreting stock charts.
+
+Some of the application that can be shown in the applications are the following:
+
+### Example of Rolling Window Calculated for BTC
+![img](img/Figure_1.png)
+
+A rolling window in trading pattern fundamental analysis continuously updates calculations using a fixed-size subset of the most recent data points. It helps track trends and patterns by focusing on the latest market movements while discarding older data. This method is often used for calculating moving averages, volatility, or momentum, providing real-time insight into price behavior. By using a rolling window, traders can react to changes more dynamically, making adjustments based on the most current market conditions.
+
+
 
 ### Features
 
