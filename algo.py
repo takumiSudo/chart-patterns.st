@@ -80,7 +80,7 @@ extreme[1] = index of extreme
 extreme[2] = price of extreme
 """
 def directional_change(close: np.array, high: np.array, low: np.array, sigma:float):
-    up_zig = True # Set last extreme is a bottom. Next is high
+    up_zig = True  # Set last extreme as a bottom. Next look for a high
     tmp_max = high[0]
     tmp_min = low[0]
     tmp_max_i = 0
@@ -90,18 +90,23 @@ def directional_change(close: np.array, high: np.array, low: np.array, sigma:flo
     bottoms = []
 
     for i in range(len(close)):
-        if up_zig: # if the last extreme was low -> next is high
+        if up_zig:  # if the last extreme was low -> next is high
             if high[i] > tmp_max:
                 tmp_max = high[i]
                 tmp_max_i = i
-            elif close[i] < tmp_max - tmp_max * sigma: # if the close[i] price was lower than the tmp_max - (tmp_max * sigma)
+            elif close[i] < tmp_max * (1 - sigma):
                 top = [i, tmp_max_i, tmp_max]
                 tops.append(top)
-        else: # last extreme was a high -> next is a low
-            if low[i] > tmp_min:
+
+                # Setup for next bottom
+                up_zig = False
                 tmp_min = low[i]
                 tmp_min_i = i
-            elif close[i] > tmp_min - tmp_min * sigma:
+        else:  # last extreme was a high -> next is a low
+            if low[i] < tmp_min:
+                tmp_min = low[i]
+                tmp_min_i = i
+            elif close[i] > tmp_min * (1 + sigma):
                 bottom = [i, tmp_min_i, tmp_min]
                 bottoms.append(bottom)
 
@@ -121,6 +126,7 @@ def get_extremes(ohlc: pd.DataFrame, sigma: float):
     extremes = pd.concat([tops, bottoms])
     extremes = extremes.set_index('conf_i')
     extremes = extremes.sort_index()
+    return extremes
 
 """
 Perceptually Important Points
